@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="gENSP.A.R.K developer environment for MetaMeet" />
+  <title>gENSP.A.R.K // Developer Environment</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body data-mode="idle">
+  <div class="noise" aria-hidden="true"></div>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">META-MATICS // CODER CORE</p>
+      <h1>gENSP.A.R.K <span>Developer Environment</span></h1>
+    </div>
+    <div class="status-row" aria-label="Developer environment status">
+      <span class="chip" id="repoChip">repo: Iansogotthis/metameet</span>
+      <span class="chip" id="branchChip">branch: feature/genspark-developer-environment</span>
+      <span class="chip live" id="modeChip">IDLE</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel pet-panel" aria-labelledby="petTitle">
+      <div class="panel-head">
+        <div><p class="eyebrow">ACTIVE COLLABORATOR</p><h2 id="petTitle">Coder Creature</h2></div>
+        <button class="ghost" id="pulseBtn" type="button">Pulse +1</button>
+      </div>
+
+      <div class="pet-stage" id="petStage" aria-live="polite">
+        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+        <div class="spark" id="spark" role="img" aria-label="gENSP.A.R.K coding state visualization">
+          <span class="core"></span>
+          <span class="ray ray-1"></span><span class="ray ray-2"></span><span class="ray ray-3"></span>
+          <span class="ray ray-4"></span><span class="ray ray-5"></span><span class="ray ray-6"></span>
+        </div>
+        <div class="state-readout"><strong id="stateName">IDLE</strong><span id="stateMessage">Waiting for a construction target.</span></div>
+      </div>
+
+      <div class="mode-grid" id="modeGrid">
+        <button data-mode="scan">Scan</button><button data-mode="build">Build</button><button data-mode="debug">Debug</button>
+        <button data-mode="test">Test</button><button data-mode="audit">Audit</button><button data-mode="ship">Ship</button>
+      </div>
+
+      <form id="taskForm" class="task-box">
+        <label for="taskInput">Construction target</label>
+        <textarea id="taskInput" rows="5" placeholder="Example: Trace why Grove 9 play fails on mobile, repair the smallest cause, test it, and report evidence."></textarea>
+        <div class="form-actions"><button class="primary" type="submit">Run through Coder Core</button><button class="ghost" type="button" id="clearTaskBtn">Clear</button></div>
+      </form>
+    </section>
+
+    <section class="panel work-panel" aria-labelledby="traceTitle">
+      <div class="panel-head">
+        <div><p class="eyebrow">RELATION → GAP → REPAIR</p><h2 id="traceTitle">Code Trace</h2></div>
+        <button class="ghost" id="clearTraceBtn" type="button">Clear trace</button>
+      </div>
+
+      <div class="trace-grid">
+        <article><span>TARGET</span><p id="traceTarget">No task yet.</p></article>
+        <article><span>MAP</span><p id="traceMap">Repository map ready.</p></article>
+        <article><span>EVIDENCE</span><p id="traceEvidence">No runtime evidence yet.</p></article>
+        <article><span>GAP</span><p id="traceGap">Unestablished.</p></article>
+        <article><span>PATCH</span><p id="tracePatch">Unestablished.</p></article>
+        <article><span>TEST</span><p id="traceTest">Built-in self-test available.</p></article>
+        <article><span>STATUS</span><p id="traceStatus">UNESTABLISHED</p></article>
+        <article class="plus"><span>+1</span><p id="tracePlus">No reusable capacity recorded yet.</p></article>
+      </div>
+
+      <div class="subpanel">
+        <div class="subpanel-head">
+          <div><p class="eyebrow">PERSISTENT LOCAL MEMORY</p><h3>Project Map</h3></div>
+          <button class="ghost" id="addMapBtn" type="button">Add relation</button>
+        </div>
+        <ul class="project-map" id="projectMap"></ul>
+      </div>
+
+      <div class="subpanel">
+        <div class="subpanel-head">
+          <div><p class="eyebrow">ACTIVITY</p><h3>Execution Feed</h3></div>
+          <span class="chip" id="bridgeState">host bridge: waiting</span>
+        </div>
+        <div class="console" id="consoleLog" role="log" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="panel tools-panel" aria-labelledby="toolsTitle">
+      <div class="panel-head"><div><p class="eyebrow">AUTHORIZED TOOL SURFACE</p><h2 id="toolsTitle">Dev Tools</h2></div></div>
+      <div class="tool-stack">
+        <section class="tool-card">
+          <h3>Host Bridge</h3>
+          <p>This UI requests privileged work from an authorized outer host instead of storing GitHub or shell credentials in the browser.</p>
+          <div class="tool-buttons">
+            <button type="button" data-tool="repo.scan">Request repo scan</button>
+            <button type="button" data-tool="tests.run">Request tests</button>
+            <button type="button" data-tool="diff.review">Request diff review</button>
+          </div>
+        </section>
+        <section class="tool-card">
+          <h3>Diff Review</h3>
+          <textarea id="diffInput" rows="8" spellcheck="false" placeholder="Paste or inject a unified diff here..."></textarea>
+          <div class="metric-row"><span id="diffFiles">0 files</span><span id="diffAdds">+0</span><span id="diffDeletes">-0</span></div>
+          <div class="tool-buttons"><button type="button" id="saveDiffBtn">Analyze & save</button><button type="button" id="clearDiffBtn">Clear</button></div>
+        </section>
+        <section class="tool-card">
+          <h3>Tests</h3><p id="testSummary">Self-tests have not run.</p><button type="button" id="selfTestBtn">Run local self-tests</button><ul id="testResults" class="test-results"></ul>
+        </section>
+        <section class="tool-card">
+          <h3>Browser Target</h3>
+          <label for="previewUrl">URL</label><input id="previewUrl" type="url" placeholder="https://meetmeta-groves.mount88ian.chatgpt.site" />
+          <div class="tool-buttons"><button type="button" id="previewBtn">Load preview</button><button type="button" id="openPreviewBtn">Open separately</button></div>
+          <iframe id="previewFrame" title="Target browser preview" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>INTENT → MAP → CONSTRUCTION → TEST → GAP → REPAIR → VERIFIED +1</span><span id="savedAt">memory not yet written</span></footer>
+  <script src="./app.js"></script>
+</body>
+</html>
