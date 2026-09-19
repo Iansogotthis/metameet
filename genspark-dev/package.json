@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "description": "gENSP.A.R.K developer environment static shell and host bridge",
   "scripts": {
+    "dev": "node server.mjs",
     "check:js": "node --check app.js",
-    "test": "node --check app.js && node tests/smoke.mjs"
+    "test": "node --check app.js && node --check server.mjs && node tests/smoke.mjs"
   }
 }
