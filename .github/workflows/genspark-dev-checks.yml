@@ -1,0 +1,25 @@
+name: gENSP.A.R.K Developer Checks
+
+on:
+  push:
+    paths:
+      - "genspark-dev/**"
+      - ".github/workflows/genspark-dev-checks.yml"
+  pull_request:
+    paths:
+      - "genspark-dev/**"
+      - ".github/workflows/genspark-dev-checks.yml"
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: genspark-dev
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Run Coder Core checks
+        run: npm test

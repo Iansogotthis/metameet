@@ -1,0 +1,20 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "gENSP.A.R.K: Verify",
+      "type": "shell",
+      "command": "npm test",
+      "options": { "cwd": "${workspaceFolder}/genspark-dev" },
+      "problemMatcher": []
+    },
+    {
+      "label": "gENSP.A.R.K: Run Developer Environment",
+      "type": "shell",
+      "command": "npm run dev",
+      "options": { "cwd": "${workspaceFolder}/genspark-dev" },
+      "isBackground": true,
+      "problemMatcher": []
+    }
+  ]
+}
