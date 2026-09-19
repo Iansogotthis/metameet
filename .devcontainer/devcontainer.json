@@ -1,0 +1,12 @@
+{
+  "name": "MetaMeet + gENSP.A.R.K",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
+  "forwardPorts": [4173],
+  "portsAttributes": {
+    "4173": {
+      "label": "gENSP.A.R.K Developer Environment",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "postCreateCommand": "cd genspark-dev && npm test"
+}
